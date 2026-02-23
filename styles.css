@@ -1,15 +1,11 @@
-/* Basic styling */
+/* Basic styling – toned down slightly for less "gaming" feel */
 body {
   margin: 0;
   padding: 25px;
   font-family: "Segoe UI", Tahoma, sans-serif;
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #fff;
+  color: #e0e0e0;
   overflow-x: hidden;
-}
-
-.title {
-  color: #5C6AC4;
 }
 
 /* HIDE MAIN CONTENT UNTIL UNLOCK */
@@ -17,7 +13,7 @@ body {
   display: none;
 }
 
-/* LOCK SCREEN STYLING */
+/* LOCK SCREEN */
 #lockScreen {
   position: fixed;
   inset: 0;
@@ -28,108 +24,100 @@ body {
   flex-direction: column;
   z-index: 9999;
 }
-
 #lockScreen h2 {
   margin-bottom: 20px;
-  color: #00f7ff;
-  text-shadow: 0 0 12px #00f7ff;
+  color: #4fc3f7;
 }
-
 #passwordInput {
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  font-size: 1rem;
-  margin-bottom: 10px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #222;
+  color: white;
+  font-size: 1.1rem;
+  width: 220px;
   text-align: center;
 }
-
 #unlockBtn {
-  padding: 10px 20px;
+  padding: 10px 30px;
   border: none;
-  border-radius: 8px;
-  background: #00f7ff;
-  color: black;
+  border-radius: 6px;
+  background: #4fc3f7;
+  color: #000;
   font-weight: bold;
   cursor: pointer;
   transition: 0.2s;
 }
-
 #unlockBtn:hover {
-  box-shadow: 0 0 15px #00f7ff;
+  background: #29b6f6;
 }
-
 #resetLogin {
-  margin-top: 15px;
+  margin-top: 20px;
   font-size: 0.9rem;
   color: #888;
   cursor: pointer;
+  text-decoration: underline;
 }
 
+/* MAIN CONTENT */
 header {
   text-align: center;
   padding: 30px 20px;
 }
-
 h1 {
-  font-size: 3rem;
-  letter-spacing: 2px;
-  text-shadow: 0 0 15px #00f7ff;
+  font-size: 2.8rem;
+  letter-spacing: 1px;
+  color: #4fc3f7;
 }
-
 h2 {
-  margin-top: 0;
-  color: #00f7ff;
-  text-shadow: 0 0 8px #00f7ff;
+  color: #4fc3f7;
+  margin-bottom: 15px;
 }
-
+p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
 section {
-  background: rgba(255, 255, 255, 0.08);
-  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 25px auto;
   padding: 20px;
-  max-width: 600px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(6px);
+  max-width: 680px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
 }
-
 ul {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
-
 li {
-  margin: 12px 0;
+  margin: 10px 0;
 }
-
 a {
-  color: #fff;
+  color: #b0e0ff;
   text-decoration: none;
-  font-size: 1.1rem;
-  padding: 10px 14px;
+  font-size: 1.05rem;
+  padding: 8px 12px;
   display: block;
-  border-radius: 10px;
-  transition: all 0.25s ease;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
-
 a:hover {
-  background: rgba(0, 247, 255, 0.2);
-  box-shadow: 0 0 15px #00f7ff;
-  transform: translateX(6px);
+  background: rgba(79, 195, 247, 0.12);
+  transform: translateX(4px);
 }
-
-.pickle {
+.highlight {
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: bold;
-  color: #7CFF00;
-  text-shadow: 0 0 12px #7CFF00;
+  color: #81c784;
+  margin: 30px 0;
 }
-
+.highlight a {
+  color: #81c784;
+}
 footer {
   text-align: center;
-  padding: 20px;
-  opacity: 0.7;
+  padding: 25px;
+  font-size: 0.9rem;
+  opacity: 0.6;
 }
