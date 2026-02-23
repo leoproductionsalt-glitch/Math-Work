@@ -2,37 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Interactive math challenges and learning tools">
-  <title>Math Challenges</title>
+  <meta name="description" content="Interactive math and logic exercises for practice">
+  <title>Math & Logic Practice</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<!-- LOCK SCREEN -->
+<!-- LOCK SCREEN (first layer) -->
 <div id="lockScreen">
-  <h2>Access Code Required</h2>
-  <input type="password" id="passwordInput" placeholder="Enter code">
+  <h2>Access Required</h2>
+  <input type="password" id="passwordInput" placeholder="Enter access code">
   <button id="unlockBtn">Enter</button>
   <div id="resetLogin">Clear Saved Access</div>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN CONTENT (starts hidden) -->
 <div id="mainContent" class="hidden">
   <header>
-    <h1>Math Challenges</h1>
-    <p>Practice problems, simulations, and interactive exercises</p>
+    <h1>Math & Logic Practice</h1>
+    <p>Collection of interactive exercises, simulations, and problem-solving tools</p>
   </header>
 
-  <section>
+  <!-- Button + input for second password to reveal real names -->
+  <div id="revealSection" class="reveal-section">
+    <h3>Show Detailed Titles (Admin View)</h3>
+    <input type="password" id="revealPassword" placeholder="Enter detail code">
+    <button id="revealBtn">Reveal Details</button>
+  </div>
+
+  <section id="toolsSection">
     <h2>Interactive Tools</h2>
-    <ul>
-      <li><a href="https://newunblockedgames.gitlab.io/" target="_blank">Practice Set A</a></li>
-      <li><a href="https://ruihq.github.io/FNAF2/" target="_blank">Logic Exercise 2</a></li>
-      <li><a href="https://history.surf/" target="_blank">Strategy Collection</a></li>
-      <li><a href="https://sites.google.com/view/cyberlabs/gmes/bitlife" target="_blank">Decision Simulator</a></li>
-      <li><a href="https://delursys32.github.io/sandboxelsunblocked/" target="_blank">Sandbox Model</a></li>
-      <li><a href="https://leoproductionsalt-glitch.github.io/buckshot_roulette/" target="_blank">Probability Challenge</a></li>
-      <li><a href="https://leoproductionsalt-glitch.github.io/Hallow_Knight/" target="_blank">Adventure Puzzle</a></li>
-      <li><a href="https://sites.google.com/view/scholarvision/movies" target="_blank">Media Examples</a></li>
+    <ul id="toolsList">
+      <!-- Links start with disguised names; data-real holds the original -->
+      <li><a href="https://newunblockedgames.gitlab.io/" target="_blank" data-real="NUBG">Practice Set A</a></li>
+      <li><a href="https://ruihq.github.io/FNAF2/" target="_blank" data-real="FNAF 2">Logic Exercise 2</a></li>
+      <li><a href="https://history.surf/" target="_blank" data-real="All Bros Games">Strategy Collection</a></li>
+      <li><a href="https://sites.google.com/view/cyberlabs/gmes/bitlife" target="_blank" data-real="BitLife (and others)">Decision Simulator</a></li>
+      <li><a href="https://delursys32.github.io/sandboxelsunblocked/" target="_blank" data-real="Sandboxels">Sandbox Model</a></li>
+      <li><a href="https://leoproductionsalt-glitch.github.io/buckshot_roulette/" target="_blank" data-real="Buckshot Roulette">Probability Challenge</a></li>
+      <li><a href="https://leoproductionsalt-glitch.github.io/Hallow_Knight/" target="_blank" data-real="Hallow Knight">Adventure Puzzle</a></li>
+      <li><a href="https://sites.google.com/view/scholarvision/movies" target="_blank" data-real="Movies!">Media Examples</a></li>
     </ul>
   </section>
 
@@ -50,19 +58,23 @@
   </section>
 
   <section class="highlight">
-    <a href="https://dn.ht/picklecat/" target="_blank">Featured Interactive</a>
+    <a href="https://dn.ht/picklecat/" target="_blank">Featured Interactive Example</a>
   </section>
 
-  <footer>Personal learning project • Leo</footer>
+  <footer>Personal practice project • Leo</footer>
 </div>
 
 <script>
-const correctPassword = "leo123"; // ← change this to something stronger if possible
+// First password (unlock main page)
+const correctPassword = "leo123";          // ← change this
+const revealPasswordCorrect = "real123";   // ← second password for real names – change this too!
+
 const lockScreen = document.getElementById("lockScreen");
 const mainContent = document.getElementById("mainContent");
 const passwordInput = document.getElementById("passwordInput");
 const unlockBtn = document.getElementById("unlockBtn");
 
+// Check if already unlocked
 if (localStorage.getItem("siteUnlocked") === "true") {
   lockScreen.style.display = "none";
   mainContent.classList.remove("hidden");
@@ -79,13 +91,37 @@ function unlockSite() {
 }
 
 unlockBtn.addEventListener("click", unlockSite);
-passwordInput.addEventListener("keypress", function(e) {
+passwordInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") unlockSite();
 });
 
-document.getElementById("resetLogin").addEventListener("click", function() {
+document.getElementById("resetLogin").addEventListener("click", () => {
   localStorage.removeItem("siteUnlocked");
-  alert("Access cleared. Please refresh.");
+  alert("Access cleared. Refresh the page.");
+});
+
+// Second layer: Reveal real names
+const revealInput = document.getElementById("revealPassword");
+const revealBtn = document.getElementById("revealBtn");
+const links = document.querySelectorAll("#toolsList a");
+
+function revealRealNames() {
+  if (revealInput.value === revealPasswordCorrect) {
+    links.forEach(link => {
+      if (link.dataset.real) {
+        link.textContent = link.dataset.real;
+      }
+    });
+    document.getElementById("revealSection").style.display = "none"; // hide the input after success
+    alert("Detailed titles revealed.");
+  } else {
+    alert("Incorrect detail code.");
+  }
+}
+
+revealBtn.addEventListener("click", revealRealNames);
+revealInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") revealRealNames();
 });
 </script>
 </body>
