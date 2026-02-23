@@ -12,7 +12,6 @@
 </head>
 <body>
 
-  <!-- Header – double-click here to reveal games -->
   <header class="bg-primary text-white text-center py-5">
     <div class="container">
       <h1 class="display-4 fw-bold" id="secret-trigger">Leo’s Math Classroom</h1>
@@ -21,7 +20,6 @@
     </div>
   </header>
 
-  <!-- Navigation (same) -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#">Math Work</a>
@@ -40,7 +38,6 @@
     </div>
   </nav>
 
-  <!-- Main math content (same as before) -->
   <main class="container my-5">
     <section id="home" class="text-center mb-5">
       <h2 class="mb-4">Welcome to Math & Logic Practice</h2>
@@ -104,7 +101,6 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="bg-dark text-white text-center py-4">
     <div class="container">
       <p class="mb-1">© 2026 Leo Productions • Math & Logic Practice</p>
@@ -112,10 +108,10 @@
     </div>
   </footer>
 
-  <!-- Hidden Games – shows on double-click header -->
+  <!-- Hidden section -->
   <div id="secret-games" style="display: none; margin: 40px auto; max-width: 800px; padding: 20px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px;">
     <h4 class="text-muted">Quick Tools</h4>
-    <p class="small text-muted">Some extra links — use carefully.</p>
+    <p class="small text-muted">Extra links — use carefully.</p>
     <ul class="list-group mb-3">
       <li class="list-group-item"><a href="https://class-76.github.io/" target="_blank">Class-76 Games Hub</a></li>
       <li class="list-group-item"><a href="https://sz-games.github.io/" target="_blank">SZ Games</a></li>
@@ -123,20 +119,25 @@
       <li class="list-group-item"><a href="https://michuscrypt.github.io/jack-games/" target="_blank">Jack Games</a></li>
       <li class="list-group-item"><a href="https://unblocked8x.com/" target="_blank">Unblocked 2026 Games</a></li>
     </ul>
-    <p class="small text-muted">These often have Slope, Retro Bowl, etc. Test what works on your network.</p>
+    <p class="small text-muted">Often include Slope, Retro Bowl, etc. Test on your network.</p>
   </div>
 
-  <!-- Super simple reveal script: double-click on header title -->
+  <!-- Double-click script with debug alert -->
   <script>
+    console.log("Script loaded – double-click should work on header title"); // Check in console (F12)
     document.addEventListener('DOMContentLoaded', () => {
       const trigger = document.getElementById('secret-trigger');
+      if (!trigger) {
+        console.error("Trigger element not found!");
+        return;
+      }
       let lastClick = 0;
-
       trigger.addEventListener('click', () => {
         const now = new Date().getTime();
-        if (now - lastClick < 300) {  // double-click within 300ms
+        if (now - lastClick < 300) {  // double-click window
           document.getElementById('secret-games').style.display = 'block';
-          alert('Unlocked! Scroll down for extras.');
+          alert('Unlocked! Scroll down for the extras.');
+          console.log("Double-click detected – games revealed");
         }
         lastClick = now;
       });
