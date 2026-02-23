@@ -101,7 +101,7 @@
       </ul>
     </section>
 
-    <!-- HIDDEN: Game sections only show after double-click -->
+    <!-- Hidden wrapper – game sections stay invisible until double-click -->
     <div id="hidden-tools" style="display: none;">
 
       <section id="toolsSection" class="mt-5">
@@ -146,7 +146,7 @@
     </div>
   </footer>
 
-  <!-- Double-click reveal script -->
+  <!-- Reveal script: double-click on header title -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const trigger = document.getElementById('secret-trigger');
@@ -154,7 +154,7 @@
 
       trigger.addEventListener('click', () => {
         const now = new Date().getTime();
-        if (now - lastClick < 300) {  // double-click detection
+        if (now - lastClick < 300) {
           document.getElementById('hidden-tools').style.display = 'block';
           alert('Interactive tools unlocked – scroll down!');
         }
